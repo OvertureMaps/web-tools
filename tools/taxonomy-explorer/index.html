@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Places Taxonomy Explorer | Overture Maps Foundation</title>
+    <meta
+      name="description"
+      content="Browse the Overture Places taxonomy hierarchy and download it as CSV."
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script>
+      // Pick the theme before first paint. An embedding page can force one with
+      // ?theme=light|dark; otherwise follow the OS preference live.
+      (function () {
+        var root = document.documentElement;
+        var param = new URLSearchParams(window.location.search).get('theme');
+        if (param === 'light' || param === 'dark') {
+          root.dataset.theme = param;
+          return;
+        }
+        var query = window.matchMedia('(prefers-color-scheme: dark)');
+        var apply = function () {
+          root.dataset.theme = query.matches ? 'dark' : 'light';
+        };
+        apply();
+        query.addEventListener('change', apply);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

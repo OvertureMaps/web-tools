@@ -1,0 +1,68 @@
+/* Page shell. The browser fills the viewport, so in an iframe the frame's
+   height is the tool's height. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--te-bg);
+  color: var(--te-text);
+  font-family: var(--te-font-family);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--te-color-primary);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px 24px 24px;
+  gap: 12px;
+}
+
+.app--framed {
+  padding: 0;
+}
+
+.app-header h1 {
+  margin: 0 0 4px;
+  color: var(--te-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.app-header p {
+  margin: 0;
+  max-width: 60em;
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+.app-main {
+  flex: 1;
+  min-height: 0;
+}
+
+.app-footer {
+  flex-shrink: 0;
+  margin-top: 8px;
+  color: var(--te-emphasis-700);
+  font-size: 0.8rem;
+}
+
+.app-footer a {
+  color: var(--te-color-primary);
+}

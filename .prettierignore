@@ -1,0 +1,9 @@
+dist/
+node_modules/
+package-lock.json
+tools/*/public/taxonomy/
+
+# Managed by the org repo template
+.github/ISSUE_TEMPLATE/
+.github/advanced-issue-labeler.yml
+.github/workflows/issue-labeler.yml
