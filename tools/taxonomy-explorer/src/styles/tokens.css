@@ -1,0 +1,48 @@
+/*
+ * Design tokens for the taxonomy explorer, built on the Overture Maps
+ * Foundation palette. Neutrals are tints of the theme's text colour over its
+ * background, so one scale works in both themes and stays on-brand.
+ *
+ * The theme is chosen by setting data-theme on <html>; see index.html.
+ */
+:root {
+  color-scheme: light;
+
+  --omf-navy: #2c2e7f;
+  --omf-teal: #0ec1bd;
+  --omf-blue: #4051cc;
+  --omf-cyan: #4edad8;
+  --omf-dark: #001a39;
+  --omf-white: #ffffff;
+
+  --te-font-family: 'Montserrat', Arial, sans-serif;
+
+  --te-bg: var(--omf-white);
+  --te-text: var(--omf-dark);
+  --te-heading: var(--omf-navy);
+  --te-color-primary: var(--omf-blue);
+  --te-on-primary: var(--omf-white);
+  --te-tag-top-bg: color-mix(in srgb, var(--omf-teal) 22%, var(--te-bg));
+
+  /* Percentages chosen so 500 and up meet WCAG AA (4.5:1) against --te-bg. */
+  --te-emphasis-0: var(--te-bg);
+  --te-emphasis-100: color-mix(in srgb, var(--te-text) 5%, var(--te-bg));
+  --te-emphasis-200: color-mix(in srgb, var(--te-text) 12%, var(--te-bg));
+  --te-emphasis-300: color-mix(in srgb, var(--te-text) 24%, var(--te-bg));
+  --te-emphasis-400: color-mix(in srgb, var(--te-text) 40%, var(--te-bg));
+  --te-emphasis-500: color-mix(in srgb, var(--te-text) 62%, var(--te-bg));
+  --te-emphasis-600: color-mix(in srgb, var(--te-text) 70%, var(--te-bg));
+  --te-emphasis-700: color-mix(in srgb, var(--te-text) 78%, var(--te-bg));
+  --te-emphasis-800: color-mix(in srgb, var(--te-text) 88%, var(--te-bg));
+  --te-emphasis-900: color-mix(in srgb, var(--te-text) 94%, var(--te-bg));
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --te-bg: var(--omf-dark);
+  --te-text: var(--omf-white);
+  --te-heading: var(--omf-white);
+  --te-color-primary: var(--omf-cyan);
+  --te-on-primary: var(--omf-dark);
+}

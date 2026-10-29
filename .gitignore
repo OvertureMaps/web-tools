@@ -1,1 +1,10 @@
-# Add file and directory types to ignore
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Local env and editor files
+.env*
+.DS_Store
+*.log
