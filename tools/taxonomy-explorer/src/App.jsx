@@ -31,6 +31,13 @@ export default function App() {
       <main className="app-main">
         <TaxonomyBrowser releases={releases} />
       </main>
+      <footer className="app-footer">
+        Taxonomy data © Overture Maps Foundation, licensed under{' '}
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">
+          CC BY 4.0
+        </a>
+        .
+      </footer>
     </div>
   );
 }

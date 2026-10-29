@@ -1,7 +1,7 @@
 /**
  * Where the site is served from. Every tool lives at <BASE_PATH><tool>/.
  *
- * Production (GitHub Pages) is https://overturemaps.github.io/web-tools/, so
+ * Production (GitHub Pages) is https://labs.overturemaps.org/web-tools/, so
  * the default is '/web-tools/'. PR previews set BASE_PATH to
  * '/web-tools/pr/<number>/'.
  */

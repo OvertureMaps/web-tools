@@ -44,3 +44,11 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Serve built site
+        run: |
+          npm run preview &
+          timeout 60 bash -c 'until curl -sf http://localhost:4173/web-tools/ >/dev/null; do sleep 1; done'
+
+      - name: Accessibility (WCAG 2.1 AA)
+        uses: lowlysre/pa11y-ci-action@84174759cd514bd3ea3bcaa30dc1798dde81f713 # v1.1.0

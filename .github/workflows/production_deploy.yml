@@ -42,7 +42,7 @@ jobs:
         run: npm test
 
       # BASE_PATH defaults to /web-tools/, matching
-      # https://overturemaps.github.io/web-tools/.
+      # https://labs.overturemaps.org/web-tools/.
       - name: Build all tools 🔧
         run: npm run build
 
@@ -59,7 +59,7 @@ jobs:
     needs: build
     environment:
       name: github-pages
-      url: https://overturemaps.github.io/web-tools/
+      url: https://labs.overturemaps.org/web-tools/
     runs-on: ubuntu-latest
     permissions:
       id-token: write # required for OIDC authentication with GitHub Pages

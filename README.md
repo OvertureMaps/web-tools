@@ -2,11 +2,11 @@
 
 Public web tools for working with [Overture Maps Foundation](https://overturemaps.org) data, kept in one repository so they share build tooling, accessibility standards, and branding.
 
-Tools are published to GitHub Pages at <https://overturemaps.github.io/web-tools/>.
+Tools are published to GitHub Pages at <https://labs.overturemaps.org/web-tools/>, the custom domain of the OvertureMaps organization's Pages site.
 
-| Tool                                                  | Live URL                                                      |
-| ----------------------------------------------------- | ------------------------------------------------------------- |
-| [Places Taxonomy Explorer](#places-taxonomy-explorer) | <https://overturemaps.github.io/web-tools/taxonomy-explorer/> |
+| Tool                                                  | Live URL                                                     |
+| ----------------------------------------------------- | ------------------------------------------------------------ |
+| [Places Taxonomy Explorer](#places-taxonomy-explorer) | <https://labs.overturemaps.org/web-tools/taxonomy-explorer/> |
 
 The [documentation site](https://github.com/OvertureMaps/docs) and the [Explore site](https://explore.overturemaps.org) live in their own repositories.
 
@@ -23,7 +23,7 @@ scripts/
 
 ## Development
 
-Requires Node.js 22.12 or later.
+Requires Node.js 24 or later.
 
 ```sh
 npm ci                                   # install all workspaces
@@ -34,6 +34,12 @@ npm run format                           # Prettier (CI runs format:check)
 npm run build                            # build every tool and assemble dist/
 npm run preview                          # serve dist/ at http://localhost:4173/web-tools/
 ```
+
+### Accessibility
+
+CI serves the built site and runs [pa11y-ci](https://github.com/pa11y/pa11y-ci) with axe against WCAG 2.1 AA, using `.pa11yci.json`. Add each new tool's URL there.
+
+The taxonomy explorer hides three elements from that check: `.taxonomy-viz-center-label`, `.taxonomy-viz-center-sub`, and `.taxonomy-viz-zoom`. axe reports them as color-contrast "needs review" because it can't resolve the background behind SVG text or controls layered over an SVG. Their colors are the same text tokens on the page background that pass AA elsewhere, so this isn't hiding a real failure.
 
 ### Base path
 
@@ -57,7 +63,7 @@ The docs site embeds the explorer in an iframe:
 
 ```html
 <iframe
-  src="https://overturemaps.github.io/web-tools/taxonomy-explorer/?theme=light"
+  src="https://labs.overturemaps.org/web-tools/taxonomy-explorer/?theme=light"
   title="Places Taxonomy Explorer"
   style="width: 100%; height: min(82vh, 940px); min-height: 560px; border: 0"
 ></iframe>
@@ -79,7 +85,9 @@ tools/taxonomy-explorer/public/taxonomy/<data-version>/
   taxonomy_to_legacy_categories.csv   legacy category crosswalk
 ```
 
-These files are published at `https://overturemaps.github.io/web-tools/taxonomy-explorer/taxonomy/<data-version>/<file>`.
+The data files are licensed under [CC BY 4.0](tools/taxonomy-explorer/public/taxonomy/LICENSE.md). The code in this repo is MIT. The tool shows this notice below the explorer, standalone and framed.
+
+These files are published at `https://labs.overturemaps.org/web-tools/taxonomy-explorer/taxonomy/<data-version>/<file>`.
 
 ### Adding a release
 

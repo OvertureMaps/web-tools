@@ -69,9 +69,6 @@ writeFileSync(
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web tools | Overture Maps Foundation</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" />
     <style>
       :root { color-scheme: light dark; }
       body { margin: 0 auto; max-width: 48rem; padding: 2rem 1.5rem; font-family: 'Montserrat', Arial, sans-serif; font-weight: 300; background: #ffffff; color: #001a39; }
