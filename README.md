@@ -99,9 +99,9 @@ These files are published at `https://labs.overturemaps.org/web-tools/taxonomy-e
 
 ```jsonc
 {
-  "version": "2026-09-23.0",
+  "version": "2026-10-21.0",
   "schemaVersion": "v2.0.0",
-  "releaseDate": "2026-09-23",
+  "releaseDate": "2026-10-21",
   "generatedAt": "…",
   "source": "…",
   "stats": {
@@ -109,22 +109,33 @@ These files are published at `https://labs.overturemaps.org/web-tools/taxonomy-e
     "basicCategories": 298,
     "rootGroups": 13,
     "maxDepth": 5,
-    "totalPlaces": 78517770,
+    "totalPlaces": 85169026,
   },
   "tree": [
     {
       "name": "arts_and_entertainment",
       "displayName": "Arts and Entertainment",
       "isBasic": true,
-      "count": 318208, // places with exactly this category (optional)
-      "totalCount": 1637265, // places in this category and its descendants
+      "count": 333890, // places with exactly this category (optional)
+      "totalCount": 1773417, // places in this category and its descendants
       "children": [/* same shape */],
     },
   ],
 }
 ```
 
-The `2026-09-23.0` files were moved as-is from the docs repository ([OvertureMaps/docs#504](https://github.com/OvertureMaps/docs/pull/504)). There is no generator script for them in this repository yet.
+There is no generator script yet. The `2026-10-21.0` files were produced this way:
+
+- The tree, display names, `isBasic`, and `basicCategory` are unchanged from the previous release, because `overture_taxonomy.json` and `overture_basic_category.json` in tf-data-platform had the same 2,302 categories and 298 basic categories. The three CSVs are copied unchanged.
+- `count` is the number of places in the release whose `taxonomy.primary` equals the node's `name` (names are unique across the taxonomy), omitted when zero. `totalCount` is `count` plus the children's `totalCount`. `stats.totalPlaces` excludes places with no taxonomy.
+
+```sql
+SELECT taxonomy.primary, count(*)
+FROM read_parquet('s3://overturemaps-us-west-2/release/<data-version>/theme=places/type=place/*.parquet')
+GROUP BY 1;
+```
+
+If the taxonomy itself changes in a release, the CSVs and tree also need regenerating from those tf-data-platform files.
 
 ## Deployment
 
